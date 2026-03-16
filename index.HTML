@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Dashboard Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="control-sidebar">
+            <img src="logo.png" alt="Logo" class="sidebar-logo-medium">
+            <div class="search-container">
+                <input type="text" id="materia" placeholder="MATERIA" class="input-3d">
+                <input type="text" id="facolta" placeholder="FACOLTÀ" class="input-3d">
+                <button class="btn-search-small" onclick="generaPianoDiStudi()">RICERCA</button>
+            </div>
+            <div id="indice-capitoli"></div>
+        </aside>
+
+        <main class="main-content">
+            <section class="panel argument-panel-top">
+                <header class="panel-header"><h2>ARGOMENTO</h2></header>
+                <div id="programma" class="scroll-area"></div>
+            </section>
+            <div class="bottom-row">
+                <section class="panel side-panel">
+                    <button class="tag-pdf" onclick="salvaEserciziPDF()">PDF ESAME</button>
+                    <header class="panel-header"><h3>ESERCIZI</h3></header>
+                    <div id="exercises-display" class="scroll-area"></div>
+                </section>
+                <section class="panel side-panel">
+                    <button class="tag-pdf" onclick="salvaAppuntiPDF()">PDF APPUNTI</button>
+                    <header class="panel-header"><h3>APPUNTI</h3></header>
+                    <textarea id="appunti" placeholder="Scrivi appunti qui..."></textarea>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
