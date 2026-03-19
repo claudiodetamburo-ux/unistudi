@@ -2,9 +2,12 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Dashboard Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>UniStudi Professional - Digital Library</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -12,30 +15,33 @@
 <body>
     <div class="app-layout">
         <aside class="control-sidebar">
-            <img src="logo.png" alt="Logo" class="sidebar-logo-medium">
-            <div class="search-container">
-                <input type="text" id="materia" placeholder="MATERIA" class="input-3d">
-                <input type="text" id="facolta" placeholder="FACOLTÀ" class="input-3d">
-                <button class="btn-search-small" onclick="generaPianoDiStudi()">RICERCA</button>
-            </div>
-            <div id="indice-capitoli"></div>
-        </aside>
+    <img src="logo.png" class="sidebar-logo">
+    <input type="text" id="materia" placeholder="MATERIA (es. Biochimica)" class="input-3d">
+    <input type="text" id="facolta" placeholder="FACOLTÀ (es. Medicina)" class="input-3d">
+    <input type="text" id="ateneo" placeholder="UNIVERSITÀ (es. Vanvitelli)" class="input-3d">
+    <button class="btn-gold" onclick="generaPianoDiStudi()">REPERISCI PROGRAMMA UFFICIALE</button>
+    <div id="indice-capitoli"></div>
+</aside>
 
         <main class="main-content">
             <section class="panel argument-panel-top">
-                <header class="panel-header"><h2>ARGOMENTO</h2></header>
-                <div id="programma" class="scroll-area"></div>
+                <header class="panel-header"><h2>TRATTATO TECNICO-SCIENTIFICO</h2></header>
+                <div id="programma" class="scroll-area">
+                    <p style="color:#444; text-align:center; margin-top:50px;">L'IA genererà un programma basato sui requisiti ministeriali della facoltà indicata.</p>
+                </div>
             </section>
+
             <div class="bottom-row">
                 <section class="panel side-panel">
-                    <button class="tag-pdf" onclick="salvaEserciziPDF()">PDF ESAME</button>
-                    <header class="panel-header"><h3>ESERCIZI</h3></header>
+                    <button class="btn-gold tag-pdf" onclick="salvaEserciziPDF()">PDF QUIZ</button>
+                    <header class="panel-header"><h3>VERIFICA APPRENDIMENTO</h3></header>
                     <div id="exercises-display" class="scroll-area"></div>
                 </section>
+
                 <section class="panel side-panel">
-                    <button class="tag-pdf" onclick="salvaAppuntiPDF()">PDF APPUNTI</button>
-                    <header class="panel-header"><h3>APPUNTI</h3></header>
-                    <textarea id="appunti" placeholder="Scrivi appunti qui..."></textarea>
+                    <button class="btn-gold tag-pdf" onclick="salvaAppuntiPDF()">PDF NOTE</button>
+                    <header class="panel-header"><h3>NOTE E INTEGRAZIONI</h3></header>
+                    <textarea id="appunti" placeholder="Scrivi qui annotazioni dalle lezioni..."></textarea>
                 </section>
             </div>
         </main>

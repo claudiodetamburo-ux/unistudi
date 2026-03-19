@@ -1,89 +1,55 @@
-:root {
-    --ocra-yellow: #CCAC41;
-    --ocra-bright: #FFD54F;
-    --green-neon: #39FF14;
-    --azure-neon: #00D2FF;
-    --bg-main: #1A1A1A;      
-    --panel-bg: #2C2C2C;     
-    --text-color: #F5F5F5;
+:root { 
+    --ocra: #CCAC41; --ocra-bright: #FFD54F; 
+    --azzurro: #00E5FF; --verde: #00C853; /* Verde per il completato */
+    --bg: #0A0A0A; --panel: #161616; 
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body, html { height: 100%; width: 100%; background: var(--bg); color: #D1D1D1; overflow: hidden; }
+.app-layout { display: flex; height: 100vh; width: 100vw; }
 
-body, html { 
-    height: 100%; width: 100%; 
-    background: var(--bg-main); color: var(--text-color); 
-    overflow: hidden; font-size: 13px; 
-}
+/* SIDEBAR */
+.control-sidebar { width: 250px; background: #121212; display: flex; flex-direction: column; padding: 20px; border-right: 1px solid rgba(204,172,65,0.2); }
+.sidebar-logo { width: 60%; align-self: center; margin-bottom: 15px; filter: brightness(1.1); }
+.input-3d { width: 100%; padding: 12px; background: #000; border: 1px solid #333; border-radius: 5px; color: #fff; font-size: 11px; margin-bottom: 10px; outline: none; }
+.btn-gold { background: var(--ocra); color: #000; border: none; padding: 12px; border-radius: 4px; font-weight: 800; font-size: 10px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+.btn-gold:hover { background: var(--ocra-bright); box-shadow: 0 0 15px var(--ocra-bright); }
 
-.app-layout { display: flex; height: 100vh; width: 100vw; overflow: hidden; }
+/* CAPITOLI SIDEBAR - LOGICA COLORI */
+#indice-capitoli { flex: 1; overflow-y: auto; margin-top: 15px; }
+.btn-cap { width: 100%; text-align: left; padding: 12px; background: transparent; border: none; border-left: 3px solid #222; color: #777; cursor: pointer; font-size: 10px; margin-bottom: 5px; transition: 0.3s; text-transform: uppercase; position: relative; }
 
-.control-sidebar { 
-    width: 260px; background: #252525; 
-    display: flex; flex-direction: column; padding: 20px; gap: 15px; 
-    flex-shrink: 0; border-right: 1px solid rgba(204,172,65,0.3);
-}
+/* Hover generico (Azzurro) */
+.btn-cap:hover { color: #FFF; border-left: 3px solid var(--azzurro); background: rgba(255,255,255,0.03); }
 
-.sidebar-logo-medium { width: 80px; display: block; margin: 0 auto; filter: drop-shadow(0 0 5px var(--ocra-yellow)); }
+/* Stato ATTIVO (Azzurro con bagliore) */
+.btn-cap.attivo { border-left: 3px solid var(--azzurro) !important; color: #fff !important; background: rgba(0,229,255,0.05); box-shadow: -5px 0 10px var(--azzurro); }
 
-.input-3d {
-    width: 100%; padding: 10px; margin-bottom: 5px;
-    background: #1A1A1A; border: 1px solid #333;
-    border-radius: 6px; font-size: 10px; color: white; outline: none;
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
-}
+/* Stato COMPLETATO (Verde - La linea resta verde) */
+.btn-cap.completato { border-left: 3px solid var(--verde) !important; color: #aaa; /* Testo leggermente spento */ background: transparent; box-shadow: none; /* Rimuoviamo il bagliore dell'attivo */ }
+.btn-cap.completato:hover { color: #fff; background: rgba(0,200,83,0.03); }
 
-.btn-search-small {
-    background: var(--ocra-yellow); color: white; border: none;
-    padding: 6px 15px; font-size: 9px; font-weight: 800;
-    border-radius: 4px; cursor: pointer; width: auto; align-self: center;
-    text-transform: uppercase; letter-spacing: 1px;
-    box-shadow: 0 3px 0 #8a732d; transition: all 0.2s;
-}
-.btn-search-small:hover { background: var(--ocra-bright); color: #000; box-shadow: 0 0 15px var(--ocra-bright); transform: translateY(-1px); }
-
-#indice-capitoli { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-.btn-cap { 
-    text-align: left; padding: 10px; font-size: 10px; 
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); 
-    border-radius: 6px; cursor: pointer; color: #bbb; transition: 0.3s;
-}
-.btn-cap.attivo { border-left: 4px solid var(--azure-neon); background: rgba(0, 210, 255, 0.1); color: white; }
-.btn-cap.completato { border-left: 4px solid var(--green-neon); }
-
+/* PANNELLI E TESTO */
 .main-content { flex: 1; display: flex; flex-direction: column; padding: 15px; gap: 15px; height: 100vh; }
-.panel { background: var(--panel-bg); border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); position: relative; }
-
-.argument-panel-top { height: 50%; flex-shrink: 0; border-top: 2px solid var(--ocra-yellow); }
-.side-panel { flex: 1; border-top: 2px solid var(--ocra-yellow); }
-.bottom-row { display: flex; flex: 1; gap: 15px; min-height: 0; }
-
+.panel { background: var(--panel); border-radius: 8px; border-top: 2px solid var(--ocra); display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.argument-panel-top { flex: 2.5; }
+.bottom-row { flex: 1.2; display: flex; gap: 15px; min-height: 0; }
+.side-panel { flex: 1; }
 .panel-header { padding: 10px 15px; background: rgba(0,0,0,0.4); }
-.panel-header h2, .panel-header h3 { font-size: 9px; color: var(--ocra-yellow); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+.panel-header h2, .panel-header h3 { font-size: 10px; color: var(--ocra); text-transform: uppercase; }
+.scroll-area { flex: 1; overflow-y: auto; padding: 35px; font-size: 13px; line-height: 1.8; text-align: justify; }
 
-.scroll-area { flex: 1; overflow-y: auto; padding: 25px; line-height: 1.7; color: #e0e0e0; }
-textarea { flex: 1; background: #222; color: #fff; border: none; padding: 15px; resize: none; outline: none; box-shadow: inset 2px 2px 8px rgba(0,0,0,0.5); }
+/* TITOLI PARAGRAFI AMBRA CON LINEA */
+#programma h2, #programma h3, #programma h4 { color: var(--ocra); font-weight: 900; text-transform: uppercase; margin: 40px 0 20px 0; font-size: 14px; padding-bottom: 8px; position: relative; display: inline-block; }
+#programma h2::after, #programma h3::after, #programma h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: var(--ocra); box-shadow: 0 2px 8px var(--ocra-bright); }
+#programma p { margin-bottom: 22px; color: #BDBDBD; }
 
-/* FIX TASTI PDF */
-.tag-pdf { 
-    position: absolute; top: 8px; right: 12px; z-index: 10; 
-    font-size: 8px; padding: 4px 10px; border-radius: 3px; 
-    background: var(--ocra-yellow); color: white; border: none; cursor: pointer; font-weight: bold;
-    transition: all 0.2s;
-}
-.tag-pdf:hover { 
-    background: var(--ocra-bright); 
-    color: #000 !important; /* TESTO NERO */
-    box-shadow: 0 0 12px var(--ocra-bright); 
-    transform: scale(1.05); 
-}
+/* FORMULE MATHJAX - CORREZIONE VISUALE */
+.mjx-chtml { font-size: 110% !important; color: var(--azzurro) !important; padding: 5px 0; }
 
-@media (max-width: 768px) {
-    body, html { overflow-y: auto; height: auto; }
-    .app-layout { flex-direction: column; height: auto; }
-    .control-sidebar { width: 100%; height: auto; border-right: none; border-bottom: 2px solid var(--ocra-yellow); }
-    .main-content { height: auto; padding: 10px; }
-    .argument-panel-top { height: 450px; }
-    .bottom-row { flex-direction: column; height: auto; }
-    .side-panel { height: 400px; }
-}
+textarea { flex: 1; background: #000; color: #ccc; padding: 15px; border: none; font-size: 13px; resize: none; outline: none; }
+.tag-pdf { position: absolute; top: 8px; right: 10px; font-size: 8px; padding: 4px 8px; z-index: 10; }
+.fonti-box { margin-top: 50px; padding: 20px; background: #0d0d0d; border-left: 4px solid var(--azzurro); }
+.quiz-container { margin-bottom: 25px; padding: 18px; background: #111; border: 1px solid #222; }
+.quiz-question { color: var(--ocra-bright); font-weight: bold; margin-bottom: 12px; font-size: 12px; }
+.quiz-option { padding: 12px; background: #1a1a1a; border: 1px solid #333; margin-bottom: 6px; cursor: pointer; border-radius: 4px; font-size: 11px; }
