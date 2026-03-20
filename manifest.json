@@ -1,6 +1,6 @@
 {
   "short_name": "UniStudi",
-  "name": "UniStudi - Vanvitelli Edition",
+  "name": "UniStudi - università digitale",
   "icons": [
     {
       "src": "icona-ap.png",
@@ -8,7 +8,7 @@
       "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "icona-ap.png",
       "sizes": "512x512",
       "type": "image/png"
     }
