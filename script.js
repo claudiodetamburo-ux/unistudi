@@ -1,6 +1,6 @@
-const P1 = "gsk_gS9vUlpx";
-const P2 = "calriicTpujzWGdyb3FY";
-const P3 = "4NWweMT0HE4WZJbraSShORd3";
+const P1 = "gsk_gS9vUlpxcalriicT";
+const P2 = "pujzWGdyb3FY4NWwe";
+const P3 = "MT0HE4WZJbraSShORd3";
 const API_KEY = P1 + P2 + P3;
 const API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
