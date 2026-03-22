@@ -53,3 +53,26 @@ textarea { flex: 1; background: #000; color: #ccc; padding: 15px; border: none; 
 .quiz-container { margin-bottom: 25px; padding: 18px; background: #111; border: 1px solid #222; }
 .quiz-question { color: var(--ocra-bright); font-weight: bold; margin-bottom: 12px; font-size: 12px; }
 .quiz-option { padding: 12px; background: #1a1a1a; border: 1px solid #333; margin-bottom: 6px; cursor: pointer; border-radius: 4px; font-size: 11px; }
+/* Regola per mettere i moduli uno sotto l'altro su cellulare */
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column; /* Forza la colonna singola */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 15px;
+    }
+
+    /* Se i moduli "Verifica" e "Note" sono dentro un contenitore unico, li incolonna */
+    .row, .footer-modules, .main-content {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    /* Assicura che ogni modulo occupi tutta la larghezza disponibile */
+    .module, .box, #output, .input-group {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+}
